@@ -1,9 +1,7 @@
 
-from flask import Flask, json, jsonify, request
-import requests
+from flask import Flask, jsonify, request
 from flask_restx import Api, Resource, fields
-from flask_cors import CORS, cross_origin
-from werkzeug.exceptions import BadRequest
+from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app=app)
