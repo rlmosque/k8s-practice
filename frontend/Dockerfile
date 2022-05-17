@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM alpine:latest
 
-ARG USER=default
+ARG USER=nonroot
 ENV HOME /home/$USER
 
 # install node js
