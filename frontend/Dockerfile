@@ -1,24 +1,24 @@
-# syntax=docker/dockerfile:1
-FROM alpine:latest
+FROM node:current-alpine
 
-ARG USER=default
-ENV HOME /home/$USER
+#ARG USER=default
+#ENV HOME /home/$USER
+
+#RUN adduser -D nonroot
+#USER nonroot
 
 # install node js
-RUN apk add --update nodejs npm
+#RUN apk add --update nodejs npm
 
 # set up work directory
-WORKDIR $HOME
+WORKDIR /usr/src/app
 
 # copy over our app code
-COPY ./myrepos /app
+#COPY ./myrepos /app
+COPY package*.json ./
 
-# cd into app folder
-WORKDIR /app
+RUN npm install
 
-# Add new user
-RUN adduser -D somenonrootuser
-
-USER somenonrootuser
+COPY . .
 
 CMD ["npm", "start"]
+
