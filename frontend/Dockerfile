@@ -1,24 +1,15 @@
-FROM node:current-alpine
+FROM node:18-alpine3.14
 
-#ARG USER=default
-#ENV HOME /home/$USER
+WORKDIR /frontend/
 
-#RUN adduser -D nonroot
-#USER nonroot
+COPY --chown=node:node package.json ./
 
-# install node js
-#RUN apk add --update nodejs npm
-
-# set up work directory
-WORKDIR /usr/src/app
-
-# copy over our app code
-#COPY ./myrepos /app
-COPY package*.json ./
+COPY --chown=node:node ./app ./
 
 RUN npm install
 
-COPY . .
+USER node
 
-CMD ["npm", "start"]
+EXPOSE 80
 
+CMD ["npm", "start" ]
