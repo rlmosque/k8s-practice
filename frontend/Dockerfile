@@ -8,8 +8,8 @@ COPY --chown=node:node ./app ./
 
 RUN npm install
 
-USER node
+EXPOSE 3000
 
-EXPOSE 80
+USER node
 
 CMD ["npm", "start" ]
